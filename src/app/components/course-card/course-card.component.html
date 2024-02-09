@@ -1,11 +1,12 @@
 <main class="mt-12 px-5 2xl:px-16">
+
+  <p>{{startDate }}</p>
+  <p class="text-xl font-semibold">
+    Welcome to Angular University, here are of our beginner friendly courses
+  </p>
   <div
-    class="card-wrap grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+    class="card-wrap grid md:grid-cols-2 lg:grid-cols-3 3xl:grid-cols-4 gap-6"
   >
-    <p class="text-xl font-semibold">
-      Welcome to Angular University, here are of our beginner friendly
-      courses
-    </p>
     @for(course of Courses; track Courses; let count = $count){
     <div
       [class.is-even]="$even"
@@ -14,7 +15,45 @@
       <p class="w-full text-center text-[2rem] leading-9 mb-4 font-bold">
         {{ course.description }}
       </p>
-      <img [src]="course.iconUrl" alt="" class="ml-auto mr-auto rounded-md" />
+      <div class="pic relative overflow-hidden">
+        <img [src]="course.iconUrl" alt="" class="ml-auto mr-auto rounded-md" />
+
+        @switch (course.category) { 
+
+          @case("BEGINNER"){
+            <div
+          class="circle absolute -top-8 -right-2 bg-red-400 h-32 w-32 rounded-full z-10 text-white"
+        >
+          <p class="text-center mt-14 text-lg font-semibold">Beginner</p>
+        </div>
+          }
+
+          @case("INTERMEDIATE"){
+            <div
+            class="circle absolute -top-8 -right-2 bg-yellow-300 h-32 w-32 rounded-full z-10 text-white"
+          >
+            <p class="text-center mt-14 text-lg font-semibold">Intermediate</p>
+          </div>
+          }
+          @case("ADVANCED"){
+            <div
+            class="circle absolute -top-8 -right-2 bg-emerald-500 h-32 w-32 rounded-full z-10 text-white"
+          >
+            <p class="text-center mt-14 text-lg font-semibold">Advanced</p>
+          </div>
+          }
+          @default {
+            <div
+            class="circle absolute -top-8 -right-2 bg-red-500 h-32 w-32 rounded-full z-10 text-white"
+          >
+            <p class="text-center mt-14 text-lg font-semibold">Unknown</p>
+          </div>
+          }
+
+        }
+
+      </div>
+
       <p class="text-center font-medium mt-4 leading-5">
         {{ course.longDescription }}
       </p>

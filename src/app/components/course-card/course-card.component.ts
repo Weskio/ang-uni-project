@@ -14,6 +14,8 @@ export class CourseCardComponent {
 
   Courses:Course[] = this.courses.getCourses()
 
+  startDate = new Date(2000, 0, 1);
+
 
 
 }
