@@ -1,20 +1,30 @@
 <main class="mt-12 px-5 2xl:px-16">
-  <div class="card-wrap grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-
-  @for(course of Courses; track Courses){
-    <div class="card border border-white shadow-2xl mt-6 mb-6 rounded-md px-12 py-5">
-        <p class="w-full text-center text-[2rem] leading-9 mb-4 font-bold">{{course.description}}</p>
-        <img
-          [src]="course.iconUrl"
-          alt=""
-          class="ml-auto mr-auto"
-        />
-        <p class="text-center font-medium mt-4 leading-5">
-          {{course.longDescription}}
-        </p>
-      </div>
-  }
-    
-
+  <div
+    class="card-wrap grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+  >
+    <p class="text-xl font-semibold">
+      Welcome to Angular University, here are of our beginner friendly
+      courses
+    </p>
+    @for(course of Courses; track Courses; let count = $count){
+    <div
+      [class.is-even]="$even"
+      class="card border border-white shadow-2xl mt-6 mb-6 rounded-md px-12 py-5"
+    >
+      <p class="w-full text-center text-[2rem] leading-9 mb-4 font-bold">
+        {{ course.description }}
+      </p>
+      <img [src]="course.iconUrl" alt="" class="ml-auto mr-auto rounded-md" />
+      <p class="text-center font-medium mt-4 leading-5">
+        {{ course.longDescription }}
+      </p>
+    </div>
+    } @empty {
+    <p
+      class="text-center text-3xl font-semibold absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+    >
+      ooops! There are no courses available at the moment
+    </p>
+    }
   </div>
 </main>
