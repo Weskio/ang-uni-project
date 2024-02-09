@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { CourseService } from '../../services/course.service';
+import { Course } from '../../interfaces/interface';
 
 @Component({
   selector: 'app-course-card',
@@ -8,5 +10,10 @@ import { Component } from '@angular/core';
   styleUrl: './course-card.component.css'
 })
 export class CourseCardComponent {
+  constructor(private courses:CourseService){}
+
+  Courses:Course[] = this.courses.getCourses()
+
+
 
 }
